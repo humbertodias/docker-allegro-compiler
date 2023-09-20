@@ -60,8 +60,8 @@ COPY --from=0 /opt/ /opt/
 
 USER builder
 
-#COPY commit-d25c4cf.patch scripts/* /opt/source/
 ADD fn.sh /opt/source/fn.sh
+ADD Toolchain-mingw.cmake /opt/source/allegro5/cmake/Toolchain-mingw.cmake
 
 # bash as default
 SHELL ["/bin/bash", "-c"]

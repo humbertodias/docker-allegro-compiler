@@ -89,6 +89,7 @@ build_dumb() {
 	cd ../..
 	rm -r build
 }
+
 install_minimp3() {
 	export INSTALL_PREFIX=/usr/i686-w64-mingw32
 
