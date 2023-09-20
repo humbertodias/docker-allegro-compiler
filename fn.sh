@@ -26,6 +26,7 @@ build_png() {
 	sudo make install
 	make clean
 }
+
 build_freetype() {
 	# Adapted from openTTD cross-compilation instructions (just changed '/usr/local' to '/usr', and bumped version from 2.8 to 2.10):
 	# https://wiki.openttd.org/en/Archive/Compilation and Ports/Cross-compiling for Windows
@@ -42,6 +43,7 @@ build_freetype() {
 	make clean
 	# Now freetype will be installed in /usr/i686-w64-mingw32
 }
+
 build_ogg() {
 	cd /opt/source/libogg*
 	./configure \
@@ -53,6 +55,7 @@ build_ogg() {
 	sudo make install
 	make clean
 }
+
 build_vorbis() {
 	cd /opt/source/libvorbis*
 	./configure \
@@ -64,6 +67,7 @@ build_vorbis() {
 	sudo make install
 	make clean
 }
+
 build_dumb() {
 	# git clone https://github.com/kode54/dumb.git --depth 1
 	# Alternative for specific version:
@@ -93,6 +97,7 @@ install_minimp3() {
 	sudo cp minimp3*.h $INSTALL_PREFIX/include
 	# That's it... minimp3 is header-only
 }
+
 build_flac() {
 	cd /opt/source/flac*
 	./configure \
@@ -104,6 +109,7 @@ build_flac() {
 	sudo make install
 	# TODO clean
 }
+
 build_physfs() {
 	cd /opt/source/physfs*
 
@@ -145,6 +151,7 @@ build_alleg5_mingw_monolith() {
 	sudo ldconfig
 	cd ../..
 }
+
 build_alleg5_mingw_release() {
 	# Check that we're in the right place
 	test -e src/allegro.c || (
@@ -167,6 +174,7 @@ build_alleg5_mingw_release() {
 	cd ../..
 
 }
+
 build_alleg5_mingw_debug() {
 	# Check that we're in the right place
 	test -e src/allegro.c || (
@@ -188,6 +196,7 @@ build_alleg5_mingw_debug() {
 	sudo ldconfig
 	cd ../..
 }
+
 build_alleg5_mingw_debug_monolith() {
 	# Check that we're in the right place
 	test -e src/allegro.c || (
@@ -210,6 +219,7 @@ build_alleg5_mingw_debug_monolith() {
 	sudo ldconfig
 	cd ../..
 }
+
 build_alleg5_mingw_static() {
 	# Check that we're in the right place
 	test -e src/allegro.c || (

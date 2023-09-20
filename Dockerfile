@@ -51,6 +51,7 @@ RUN useradd -U -G sudo -p '' -m builder && \
 	# or choose the -x86-64 or -i686 packages
 	gcc-mingw-w64-i686 \
 	g++-mingw-w64-i686 \
+	build-essential \
     make \
     sudo \
 	&& apt clean && rm -rf /var/lib/apt/lists/*
@@ -89,7 +90,6 @@ RUN source /opt/source/fn.sh && \
 
 RUN source /opt/source/fn.sh && \
     cd /opt/source/allegro5 && \
-	#patch -p1 < /opt/source/commit-d25c4cf.patch && \
 	build_alleg5_mingw_monolith && \
 	build_alleg5_mingw_release && \
 	build_alleg5_mingw_debug && \
