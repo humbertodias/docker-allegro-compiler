@@ -252,12 +252,14 @@ build_alleg5_debug_release() {
 	mkdir -p Build/{Debug,Release}
 
 	cd Build/Debug
-	cmake -DCMAKE_BUILD_TYPE=Debug -DWANT_DOCS=off -DWANT_EXAMPLES=off -DWANT_DEMO=off ../.. && make
+	cmake -DCMAKE_TOOLCHAIN_FILE=../../cmake/Toolchain-mingw.cmake \
+		  -DCMAKE_BUILD_TYPE=Debug -DWANT_DOCS=off -DWANT_EXAMPLES=off -DWANT_DEMO=off ../.. && make
 	make install && ldconfig
 	cd ../..
 
 	cd Build/Release
-	cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo -DWANT_DOCS=off -DWANT_EXAMPLES=off -DWANT_DEMO=off ../.. && make
+	cmake -DCMAKE_TOOLCHAIN_FILE=../../cmake/Toolchain-mingw.cmake \
+	      -DCMAKE_BUILD_TYPE=RelWithDebInfo -DWANT_DOCS=off -DWANT_EXAMPLES=off -DWANT_DEMO=off ../.. && make
 	make install && ldconfig
 	cd ../..
 }

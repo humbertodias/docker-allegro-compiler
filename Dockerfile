@@ -91,11 +91,11 @@ USER root
 RUN source /opt/source/fn.sh && \
     cd /opt/source/allegro5 && \
 	build_alleg5_debug_release && \
-	build_alleg5_mingw_monolith && \
-	build_alleg5_mingw_release && \
-	build_alleg5_mingw_debug && \
-	build_alleg5_mingw_debug_monolith && \
-	build_alleg5_mingw_static && \
+	# build_alleg5_mingw_monolith && \
+	# build_alleg5_mingw_release && \
+	# build_alleg5_mingw_debug && \
+	# build_alleg5_mingw_debug_monolith && \
+	# build_alleg5_mingw_static && \
 	rm -rf /opt/source/allegro5/Build
 USER builder
 
