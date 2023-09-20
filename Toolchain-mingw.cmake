@@ -15,7 +15,7 @@ set(CMAKE_FIND_ROOT_PATH
   $ENV{PWD}/mingw-install
   $ENV{HOME}/mingw-install)
 
-# adjust the default behaviour of the FIND_XXX() commands:
+# Adjust the default behaviour of the FIND_XXX() commands:
 # search headers and libraries in the target environment, search
 # programs in the host environment
 set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
@@ -24,3 +24,12 @@ set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 
 set(CMAKE_FIND_LIBRARY_PREFIXES "lib" "")
 set(CMAKE_FIND_LIBRARY_SUFFIXES ".dll" ".dll.a" ".lib" ".a")
+
+# Tell pkg-config not to look at the target environment's .pc files.
+# Setting PKG_CONFIG_LIBDIR sets the default search directory, but we have to
+# set PKG_CONFIG_PATH as well to prevent pkg-config falling back to the host's
+# path.
+set(ENV{PKG_CONFIG_LIBDIR} ${CMAKE_FIND_ROOT_PATH}/lib/pkgconfig)
+set(ENV{PKG_CONFIG_PATH} ${CMAKE_FIND_ROOT_PATH}/lib/pkgconfig)
+
+set(ENV{MINGDIR} ${CMAKE_FIND_ROOT_PATH})
