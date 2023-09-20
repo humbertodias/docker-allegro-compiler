@@ -9,7 +9,7 @@ RUN apt update && apt -y install \
 
 RUN useradd -U -G sudo -p '' -m builder && \
 	mkdir -p /opt/source && \
-	chown builder /opt/source/
+	chown builder /opt/source/ -R
 
 # Fetch everything in /opt/sources
 ARG ALLEGRO_VERSION=5.2.8.0
@@ -61,7 +61,7 @@ COPY --from=0 /opt/ /opt/
 USER builder
 
 ADD fn.sh /opt/source/fn.sh
-ADD Toolchain-mingw.cmake /opt/source/allegro5/cmake/Toolchain-mingw.cmake
+RUN echo "source /opt/source/fn.sh" >> ~/.bashrc
 
 # bash as default
 SHELL ["/bin/bash", "-c"]
@@ -83,26 +83,26 @@ RUN source /opt/source/fn.sh && \
 # # Theora - for video support
 # # RUN ./build-theora.sh
 
+# This is where pkg-config will find .pc files for allegro and other deps.
+ENV PKG_CONFIG_LIBDIR=/usr/i686-w64-mingw32/lib/pkgconfig
+
 # # TODO: 
 # # FreeImage, webp - for webp support
 # # Opus
 # # physFS
-USER root
 RUN source /opt/source/fn.sh && \
-    cd /opt/source/allegro5 && \
-	build_alleg5_debug_release && \
-	# build_alleg5_mingw_monolith && \
-	# build_alleg5_mingw_release && \
-	# build_alleg5_mingw_debug && \
-	# build_alleg5_mingw_debug_monolith && \
-	# build_alleg5_mingw_static && \
-	rm -rf /opt/source/allegro5/Build
-USER builder
+	cd /opt/source/allegro5 && \
+	rm -rf Build \
+	build_alleg5_mingw_monolith && \
+	build_alleg5_mingw_release && \
+	build_alleg5_mingw_debug && \
+	build_alleg5_mingw_debug_monolith && \
+	build_alleg5_mingw_static && \
+	sudo rm -rf /opt/source/allegro5/Build
 
 VOLUME /data
 WORKDIR /data
 
-# This is where pkg-config will find .pc files for allegro and other deps.
-ENV PKG_CONFIG_LIBDIR=/usr/i686-w64-mingw32/lib/pkgconfig
+
 
 CMD /bin/bash

@@ -12,6 +12,7 @@ SUFFIX=-mingw-w64-i686
 DOCKERHUB_USERNAME=hldtux
 TAG_NAME=allegro-compiler:${ALLEGRO_VERSION}${SUFFIX}
 
+.PHONY: build
 build:
 	docker build . \
 	--build-arg ALLEGRO_VERSION=${ALLEGRO_VERSION} \

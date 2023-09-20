@@ -118,15 +118,14 @@ build_physfs() {
 	cd build/release
 
 	cmake -DCMAKE_BUILD_TYPE=RelWithDebInfo \
-		-DCMAKE_TOOLCHAIN_FILE=/opt/source/Toolchain-mingw.cmake \
-		-DCMAKE_INSTALL_PREFIX=/usr/i686-w64-mingw32 \
+		  -DCMAKE_INSTALL_PREFIX=/usr/i686-w64-mingw32 \
 		../..
 
 	make
 	sudo make install
 	sudo ldconfig
 	cd ../..
-	rm -r build/release
+	rm -rf build/release
 }
 
 build_alleg5_mingw_monolith() {
@@ -140,7 +139,6 @@ build_alleg5_mingw_monolith() {
 	mkdir -p Build/MingwMonolith
 	cd Build/MingwMonolith
 	cmake \
-		-DCMAKE_TOOLCHAIN_FILE=../../cmake/Toolchain-mingw.cmake \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-DWANT_MONOLITH=on \
 		-DFREETYPE_PNG=on \
@@ -163,7 +161,6 @@ build_alleg5_mingw_release() {
 	mkdir -p Build/MingwRelease
 	cd Build/MingwRelease
 	cmake \
-		-DCMAKE_TOOLCHAIN_FILE=../../cmake/Toolchain-mingw.cmake \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-DFREETYPE_PNG=on \
 		-DFREETYPE_ZLIB=on \
@@ -186,7 +183,6 @@ build_alleg5_mingw_debug() {
 	mkdir -p Build/MingwDebug
 	cd Build/MingwDebug
 	cmake \
-		-DCMAKE_TOOLCHAIN_FILE=../../cmake/Toolchain-mingw.cmake \
 		-DCMAKE_BUILD_TYPE=Debug \
 		-DFREETYPE_PNG=on \
 		-DFREETYPE_ZLIB=on \
@@ -208,7 +204,6 @@ build_alleg5_mingw_debug_monolith() {
 	mkdir -p Build/MingwMonolithDebug
 	cd Build/MingwMonolithDebug
 	cmake \
-		-DCMAKE_TOOLCHAIN_FILE=../../cmake/Toolchain-mingw.cmake \
 		-DCMAKE_BUILD_TYPE=Debug \
 		-DWANT_MONOLITH=on \
 		-DFREETYPE_PNG=on \
@@ -234,7 +229,6 @@ build_alleg5_mingw_static() {
 	# Added CMAKE_SHARED_LINKER_FLAGS to prevent multiple definition error, see discussion here;
 	# https://www.allegro.cc/forums/thread/618386/1049706#target
 	cmake \
-		-DCMAKE_TOOLCHAIN_FILE=../../cmake/Toolchain-mingw.cmake \
 		-DCMAKE_BUILD_TYPE=RelWithDebInfo \
 		-DWANT_STATIC_RUNTIME=on \
 		-DFREETYPE_PNG=on \
@@ -245,21 +239,5 @@ build_alleg5_mingw_static() {
 	make
 	sudo make install
 	sudo ldconfig
-	cd ../..
-}
-
-build_alleg5_debug_release() {
-	mkdir -p Build/{Debug,Release}
-
-	cd Build/Debug
-	cmake -DCMAKE_TOOLCHAIN_FILE=../../cmake/Toolchain-mingw.cmake \
-		  -DCMAKE_BUILD_TYPE=Debug -DWANT_DOCS=off -DWANT_EXAMPLES=off -DWANT_DEMO=off ../.. && make
-	make install && ldconfig
-	cd ../..
-
-	cd Build/Release
-	cmake -DCMAKE_TOOLCHAIN_FILE=../../cmake/Toolchain-mingw.cmake \
-	      -DCMAKE_BUILD_TYPE=RelWithDebInfo -DWANT_DOCS=off -DWANT_EXAMPLES=off -DWANT_DEMO=off ../.. && make
-	make install && ldconfig
 	cd ../..
 }
