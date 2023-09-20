@@ -87,7 +87,7 @@ RUN source /opt/source/fn.sh && \
 # # FreeImage, webp - for webp support
 # # Opus
 # # physFS
-
+USER root
 RUN source /opt/source/fn.sh && \
     cd /opt/source/allegro5 && \
 	build_alleg5_mingw_monolith && \
@@ -95,7 +95,9 @@ RUN source /opt/source/fn.sh && \
 	build_alleg5_mingw_debug && \
 	build_alleg5_mingw_debug_monolith && \
 	build_alleg5_mingw_static && \
+	build_alleg5_debug_release && \
 	rm -rf /opt/source/allegro5/Build
+USER builder
 
 VOLUME /data
 WORKDIR /data
