@@ -1,4 +1,4 @@
-[![Deploy](https://github.com/humbertodias/docker-allegro-compiler/actions/workflows/deploy.yaml/badge.svg)](https://github.com/humbertodias/docker-allegro-compiler/actions/workflows/deploy.yaml)
+[![Deploy](https://github.com/humbertodias/docker-allegro-compiler/actions/workflows/deploy.yml/badge.svg)](https://github.com/humbertodias/docker-allegro-compiler/actions/workflows/deploy.yml)
 
 # docker-allegro-compiler
 
