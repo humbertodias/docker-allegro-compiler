@@ -4,7 +4,7 @@ on:
  workflow_dispatch:
     inputs:
         allegroversion:
-          default: "5.2.8.0"
+          default: "5.2.9.1"
           description: "Allegro"
         zlibversion:
             default: "1.3"
