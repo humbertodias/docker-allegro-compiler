@@ -12,7 +12,7 @@ RUN useradd -U -G sudo -p '' -m builder && \
 	chown builder /opt/source/ -R
 
 # Fetch everything in /opt/sources
-ARG ALLEGRO_VERSION=5.2.8.0
+ARG ALLEGRO_VERSION=5.2.9.1
 ARG ZLIB_VERSION=1.3
 ARG LIBPNG_VERSION=1.6.40
 ARG FREETYPE_VERSION=2.12.1
