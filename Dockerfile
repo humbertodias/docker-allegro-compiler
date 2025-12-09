@@ -13,7 +13,7 @@ RUN useradd -U -G sudo -p '' -m builder && \
 
 # Fetch everything in /opt/sources
 ARG ALLEGRO_VERSION=5.2.9.1
-ARG ZLIB_VERSION=1.3
+ARG ZLIB_VERSION=1.3.1
 ARG LIBPNG_VERSION=1.6.40
 ARG FREETYPE_VERSION=2.12.1
 ARG LIBOGG_VERSION=1.3.5
